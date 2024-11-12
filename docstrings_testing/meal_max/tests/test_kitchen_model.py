@@ -119,26 +119,27 @@ def test_delete_meal_not_found(mock_cursor):
     with pytest.raises(ValueError, match="Meal with ID 1 not found"):
         delete_meal(1)
 
-def test_get_leaderboard_sorted(mock_cursor):
-    """Test getting leaderboard sorted by wins and win percentage."""
-    
-    # Test sorting by wins
+def test_get_leaderboard_sorted_by_wins(mock_cursor):
+    """Test getting leaderboard sorted by wins."""
     mock_cursor.fetchall.return_value = [
         (1, "Butter Chicken", "Indian", 14.75, "MED", 10, 7, 0.7)
     ]
-    leaderboard_by_wins = get_leaderboard("wins")
-    assert leaderboard_by_wins[0]["meal"] == "Butter Chicken"
-    
-    # Test sorting by win percentage
+    leaderboard = get_leaderboard("wins")
+    assert leaderboard[0]["meal"] == "Butter Chicken"
+
+def test_get_leaderboard_sorted_by_win_pct(mock_cursor):
+    """Test getting leaderboard sorted by win percentage."""
     mock_cursor.fetchall.return_value = [
-        (3, "Burger", "American", 8.99, "MED", 5, 4, 0.8),     
-        (2, "Pizza", "Italian", 10.99, "LOW", 8, 6, 0.75),      
-        (1, "Spaghetti", "Italian", 12.99, "MED", 10, 7, 0.7)   
+        (3, "Burger", "American", 8.99, "MED", 5, 4, 0.8),
+        (2, "Pizza", "Italian", 10.99, "LOW", 8, 6, 0.75),
+        (1, "Spaghetti", "Italian", 12.99, "MED", 10, 7, 0.7)
     ]
-    leaderboard_by_win_pct = get_leaderboard("win_pct")
-    assert leaderboard_by_win_pct[0]["meal"] == "Burger"
-    assert leaderboard_by_win_pct[1]["meal"] == "Pizza"
-    assert leaderboard_by_win_pct[2]["meal"] == "Spaghetti"
+    
+    leaderboard = get_leaderboard("win_pct")
+    
+    assert leaderboard[0]["meal"] == "Burger"
+    assert leaderboard[1]["meal"] == "Pizza"
+    assert leaderboard[2]["meal"] == "Spaghetti"
 
 def test_get_leaderboard_invalid_sort_by():
     """Test getting leaderboard with invalid sorting."""
