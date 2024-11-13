@@ -1,6 +1,6 @@
 # CS411-MealMax-Working-Branch
 
-## All of our files for MealMax are in the working branch.
+## All of our files for MealMax are in this working-branch branch.
 
 ### To find our Unit Test Files:
   docstrings_testing --> meal_max --> tests --> test_battle_model.py / test_kitchen_model.py / test_random_utils.py
