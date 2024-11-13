@@ -7,7 +7,7 @@ To find our Unit Test Files:
 
 To find our Docstring Files:
   kitchen_model.py and battle_model.py:
-    docstrings_testing --> meal_max --> meal_max --> models --> kitchen_model.py / battle_model.py:
+    docstrings_testing --> meal_max --> meal_max --> models --> kitchen_model.py/battle_model.py
   random_utils.py:
     docstrings_testing --> meal_max --> meal_max --> utils --> random_utils.py
 
